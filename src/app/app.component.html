@@ -1,0 +1,27 @@
+
+<h1> {{title}} </h1>
+<h2> {{message}} </h2>
+<h3>Featured Game</h3>
+
+{{featuredGame.id}} {{featuredGame.title}}
+
+<h3>All Games</h3>
+<ul class="items">
+  <li *ngfor="let game of games" (click)="selectGame(game)">
+    <span class="badge">{{game.id}}</span>
+    {{game.title}}
+  </li>
+</ul>
+
+<section *ngIf="selectedGame">
+  <h3> Selected Game</h3>
+  <fieldset>
+    <label for="id">ID:</label>
+    <input name="id" [(ngModel)]="selectedGame.id"/>
+  </fieldset>
+  <fieldset>
+    <label for="title">Title:</label>
+    <input name="title" [(ngModel)]="selectedGame.title"/>
+  </fieldset>
+  <button class="badge" (click)="reset()">Reset</button>
+</section>
